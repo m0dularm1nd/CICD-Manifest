@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/name: api-ops
     spec:
       containers:
-        - image: m0dularm1nd/cicd-api:38
+        - image: m0dularm1nd/cicd-api:39
           name: api-ops
           resources:
             limits:
