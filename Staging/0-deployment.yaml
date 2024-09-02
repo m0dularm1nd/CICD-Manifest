@@ -34,8 +34,8 @@ spec:
       containers:
         - name: api-ops
           image: nx2.v3il.xyz/m0dularm1nd/cicd-api:48
-          imagePullSecrets:
-          - name: nxs-cred
+      imagePullSecrets:
+      - name: nxs-cred
 
 ---
 apiVersion: v1
