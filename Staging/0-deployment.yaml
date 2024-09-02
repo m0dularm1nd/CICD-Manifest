@@ -5,14 +5,12 @@ metadata:
   name: api-ns
 ---
 apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL254Mi52M2lsLnh5eiI6eyJ1c2VybmFtZSI6InlvdSIsInBhc3N3b3JkIjoidGhhdFBBU1NAMSIsImF1dGgiOiJlVzkxT25Sb1lYUlFRVk5UUURFPSJ9fX0=
 kind: Secret
 metadata:
   name: nxs-cred
   namespace: api-ns
-  labels:
-    app.kubernetes.io/name: api-ops
-data:
-  .dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImJUQmtkV3hoY20weGJtUTZaR05yY2w5d1lYUmZha1IyWlU1SFdYTmxkMmhHUzBSSFVGcEtiVU56VDA5blQwNUoiCgkJfSwKCQkiaHR0cHM6Ly9ueDIudjNpbC54eXoiOiB7CgkJCSJhdXRoIjogImVXOTFPblJvWVhSUVFWTlRRREU9IgoJCX0KCX0KfQo
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: apps/v1
