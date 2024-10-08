@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: api-ops
-          image: nx2.v3il.xyz/m0dularm1nd/cicd-api:63
+          image: nx2.v3il.xyz/m0dularm1nd/cicd-api:64
       imagePullSecrets:
       - name: nxs-cred
 
