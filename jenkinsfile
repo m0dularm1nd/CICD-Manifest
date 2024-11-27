@@ -5,7 +5,7 @@ node {
         checkout scm
     }
 
-    stage('Update GIT') {
+    stage('Update Argo') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
@@ -13,6 +13,24 @@ node {
                         sh "git config user.email jenkins@me.com"
                         sh "git config user.name jenkins"
                         //sh "git switch testing"
+                        sh "cat Staging/0-deployment.yaml"
+                        sh "sed -i 's+nx2.v3il.xyz/m0dularm1nd/cicd-api.*+nx2.v3il.xyz/m0dularm1nd/cicd-api:${DOCKERTAG}+g' Staging/0-deployment.yaml"
+                        sh "cat Staging/0-deployment.yaml"
+                        sh "git add ."
+                        sh "git commit -m 'Pulled from Private Nexus Repo, Commited by Jenkins... manifestVersion: ${env.BUILD_NUMBER}'"
+                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/CICD-Manifest.git HEAD:testing'
+      }
+    }
+  }
+}
+    stage('Update Flux') {
+            script {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
+                        sh "git config user.email jenkins@me.com"
+                        sh "git config user.name jenkins"
+                        //sh "git switch FluxCD"
                         sh "cat Staging/0-deployment.yaml"
                         sh "sed -i 's+nx2.v3il.xyz/m0dularm1nd/cicd-api.*+nx2.v3il.xyz/m0dularm1nd/cicd-api:${DOCKERTAG}+g' Staging/0-deployment.yaml"
                         sh "cat Staging/0-deployment.yaml"
