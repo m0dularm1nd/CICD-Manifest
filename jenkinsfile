@@ -13,7 +13,7 @@ node {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email jenkins@me.com"
                         sh "git config user.name jenkins"
-                        sh "git reset --hard origin/ArgoCD"
+                        sh "git reset --hard ArgoCD"
                         sh "git checkout ArgoCD"
                         sh "cat staging/0-deployment.yaml"
                         sh "sed -i 's+nx2.v3il.xyz/m0dularm1nd/cicd-api.*+nx2.v3il.xyz/m0dularm1nd/cicd-api:${DOCKERTAG}+g' staging/0-deployment.yaml"
@@ -30,7 +30,7 @@ node {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                        sh "git reset --hard origin/FluxCD"
+                        sh "git reset --hard FluxCD"
                         sh "git checkout FluxCD"
                         sh "cat staging/0-deployment.yaml"
                         sh "sed -i 's+nx2.v3il.xyz/m0dularm1nd/cicd-api.*+nx2.v3il.xyz/m0dularm1nd/cicd-api:${DOCKERTAG}+g' staging/0-deployment.yaml"
