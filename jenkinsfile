@@ -18,7 +18,7 @@ node {
                         sh "cat Staging/0-deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Pulled from Private Nexus Repo, Commited by Jenkins... manifestVersion: ${env.BUILD_NUMBER}'"
-                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/CICD-Manifest.git HEAD:testing'
+                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/CICD-Manifest.git origin/testing'
       }
     }
   }
