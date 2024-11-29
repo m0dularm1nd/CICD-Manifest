@@ -4,6 +4,39 @@ kind: Namespace
 metadata:
   name: api-ns
 ---
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: static-auth
+  namespace: api-ns
+spec:
+  # vaultConnectionRef: default
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: realm
+    serviceAccount: default
+    audiences:
+      - vault
+---
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  namespace: api-ns
+  name: vault-secret-nxs
+spec:
+  vaultAuthRef: static-auth
+  mount: vso-engine
+  type: kv-v2
+  path: app1/nxs-cred-vso
+  refreshAfter: 10s
+  destination:
+    create: true
+    name: nxs-cred-vso
+  rolloutRestartTargets:
+  - kind: Deployment
+    name: api-ops
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
