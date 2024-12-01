@@ -1,3 +1,3 @@
 # CICD-Manifest
 
-Infra repository
+MultiCD Solution using Argo and Flux
