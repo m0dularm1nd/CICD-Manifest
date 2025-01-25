@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wall-api
+  namespace: api-ns
+  labels:
+    app.kubernetes.io/name: wall-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wall-api
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wall-api
+    spec:
+      containers:
+        - name: wall-api
+          image: nx2.v3il.xyz/m0dularm1nd/wall-api:1
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-cred
+                  key: DB_USER
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-cred
+                  key: DB_HOST
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-cred
+                  key: DB_PASSWORD
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-cred
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-cred
+                  key: DB_NAME
+      imagePullSecrets:
+        - name: nxs-cred-vso

@@ -10,4 +10,3 @@ This Multibranch repository holds the Kubernetes manifests and is synchronized w
 - [FluxCD](https://github.com/m0dularm1nd/FluxCD) source controller syncing flux branch to 2nd cluster.
 - Hashi Corp Vault is deployed to seal Nexus credentials secrets using (vault secrets operator).
 - Keycloak Provides GUI (Single Sign-On) using OpenID Connect (OIDC) for jenkins, argo, and grafana.
-- [Live Demo here](https://api.v3il.xyz)
