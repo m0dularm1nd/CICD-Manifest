@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: wall-api
-          image: nx2.v3il.xyz/m0dularm1nd/wall-api:17
+          image: nx2.v3il.xyz/m0dularm1nd/wall-api:18
           env:
             - name: DB_USER
               valueFrom:
