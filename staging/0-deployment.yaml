@@ -33,6 +33,7 @@ spec:
   destination:
     create: true
     name: nxs-cred-vso
+    type: "kubernetes.io/dockerconfigjson"
   rolloutRestartTargets:
   - kind: Deployment
     name: api-ops
