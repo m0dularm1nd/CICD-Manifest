@@ -14,7 +14,7 @@ node {
                         sh "git config user.name Jenkins"
                         sh "git switch api"
                         sh "cat deploy/1-deployment.yaml"
-                        sh "sed -i 's+nx2.v3il.xyz/m0dularm1nd/wall-api.*+nx2.v3il.xyz/m0dularm1nd/wall-api:${DOCKERTAG}+g' deploy/1-deployment.yaml"
+                        sh "sed -i 's+group.repo.atman.ovh/m0dularm1nd/wall-api.*+group.repo.atman.ovh/m0dularm1nd/wall-api:${DOCKERTAG}+g' deploy/1-deployment.yaml"
                         sh "printf '##########################'"
                         sh "grep 'image:' deploy/1-deployment.yaml -C 2"
                         sh "printf '##########################'"

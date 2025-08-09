@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: wall-api
-          image: nx2.v3il.xyz/m0dularm1nd/wall-api:27
+          image: group.repo.atman.ovh/m0dularm1nd/wall-api:27
           env:
             - name: DB_USER
               valueFrom:
@@ -46,4 +46,4 @@ spec:
                   name: api-db-cred
                   key: DB_NAME
       imagePullSecrets:
-        - name: nxs-cred-vso
+        - name: reg-cs

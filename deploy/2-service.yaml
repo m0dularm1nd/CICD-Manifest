@@ -25,10 +25,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - wall.v3il.xyz
+        - wall.apps.atman.ovh
       secretName: api-ingress-tls
   rules:
-    - host: wall.v3il.xyz
+    - host: wall.apps.atman.ovh
       http:
         paths:
           - backend:
