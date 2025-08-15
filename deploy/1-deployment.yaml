@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: wall-api
-          image: group.repo.atman.ovh/m0dularm1nd/wall-api:31
+          image: group.repo.atman.ovh/m0dularm1nd/wall-api:32
           env:
             - name: DB_USER
               valueFrom:
